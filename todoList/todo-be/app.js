@@ -2,11 +2,13 @@ const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const indexRouter = require('./routes/index');
+const cors = require('cors');
 
 const app = express();
 // request body를 쉽게 읽어옴.
 // http request의 payload값을 request.body에 넣어줌.
 app.use(bodyParser.json());
+app.use(cors());
 app.use('/api', indexRouter);
 
 // URI 세팅
