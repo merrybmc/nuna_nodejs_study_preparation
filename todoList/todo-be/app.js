@@ -3,6 +3,7 @@ const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const indexRouter = require('./routes/index');
 const cors = require('cors');
+require('dotenv').config();
 
 const app = express();
 // request body를 쉽게 읽어옴.
@@ -12,7 +13,7 @@ app.use(cors());
 app.use('/api', indexRouter);
 
 // URI 세팅
-const mongoURI = 'mongodb://localhost:27017/todo-demo';
+const mongoURI = process.env.MONGODB_URI_PROD;
 
 // mongoose & mongoURI connect
 // useNewUrlParser : 옛날과 신버전 형식의 mongodb 주소가 있는데 이를 호환이 되도록 해줌.
