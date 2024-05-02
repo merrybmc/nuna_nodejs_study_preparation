@@ -1,5 +1,7 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
+const jwt = require('jsonwebtoken');
+require('dotenv').config();
 
 const userSchema = Schema(
   {
@@ -19,5 +21,16 @@ const userSchema = Schema(
   { timestamps: true }
 );
 
+userSchema.methods.toJSON = function () {
+  const obj = this._doc;
+  delete obj.password;
+  return obj;
+};
+
+userSchema.methods.generateToken = function () {
+  // expiresIn : token 유통기한 1d = 1일
+  const token = jwt.sign({ _id: this.id }, process.env.JWT_SECRET_KEY, { expiresIn: '1d' });
+  return token;
+};
 const User = mongoose.model('User', userSchema);
 module.exports = User;
