@@ -25,7 +25,7 @@ mongoose
   .catch((err) => console.log('DB connection fail', err));
 
 // port setting, 완료 시 콜백 호출
-app.listen(5000, () => {
+app.listen(proces.env.PORT || 5000, () => {
   console.log('server on 5000');
 });
 
