@@ -1,15 +1,12 @@
 // router setting
 
 const express = require('express');
+const taskController = require('../controller/task.controller');
 const router = express.Router();
 
-router.get('/', (req, res) => {
-  res.send('read task');
-});
+router.get('/', taskController.getTask);
 
-router.post('/', (req, res) => {
-  res.send('create task');
-});
+router.post('/', taskController.createTask);
 
 router.put('/:id', (req, res) => {
   res.send('update task');
@@ -20,3 +17,7 @@ router.delete('/:id', (req, res) => {
 });
 
 module.exports = router;
+
+// router.post('/', (req, res) => {
+//   res.send('create task');
+// });
