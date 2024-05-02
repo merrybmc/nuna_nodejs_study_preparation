@@ -1,4 +1,3 @@
-const { Timestamp } = require('mongodb');
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
@@ -15,7 +14,7 @@ const taskSchema = Schema(
     },
   },
   // 생성하는 데이터들의 생성 시간 표시
-  { timestamp: true }
+  { timestamps: true }
 );
 
 // Task 모델 생성
